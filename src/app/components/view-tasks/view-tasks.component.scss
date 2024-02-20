@@ -1,0 +1,41 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.task-container {
+    .mat-elevation-z8 {
+        width: 100%;
+        overflow-x: auto;
+      }
+      
+      @media only screen and (max-width: 768px) {
+        .mat-elevation-z8 {
+          overflow-x: auto;
+        }
+      }
+    .page-title {
+        text-align: center;
+        padding: 10px 0px;
+        font-size: 18px;
+    }
+
+    th,
+    td {
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 16px;
+    }
+
+    .completed {
+        color: green;
+    }
+
+    .pending {
+        color: red;
+    }
+
+    .new-task {
+        color: #3f51b5
+    }
+}

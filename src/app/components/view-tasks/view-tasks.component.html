@@ -1,0 +1,55 @@
+<div class="task-container container mt-5">
+  <div class="page-title">My Tasks</div>
+  <ng-container *ngIf="tasks.length != 0">
+    <table mat-table [dataSource]="tasks" class="mat-elevation-z8">
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Title</th>
+        <td mat-cell *matCellDef="let task">{{ task.title }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dueDate">
+        <th mat-header-cell *matHeaderCellDef>Due Date</th>
+        <td mat-cell *matCellDef="let task">{{ task.dueDate | date }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let task">
+          <div [ngClass]="task?.completed ? 'completed' : 'pending' ">{{(task?.completed)?'COMPLETED':'PENDING'}}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let task">
+          <button mat-icon-button (click)="markAsCompleted(task?.id)">
+            <mat-icon>{{ task.completed ? 'check' : 'check_box_outline_blank' }} </mat-icon>
+          </button>
+          <button mat-icon-button (click)="deleteTask(task)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-icon-button (click)="editTask(task)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="moreDetail">
+        <th mat-header-cell *matHeaderCellDef>More Details</th>
+        <td mat-cell *matCellDef="let task">
+          <button mat-button color="primary" (click)="viewDetails(task)">View</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['title', 'dueDate','actions','status','moreDetail']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['title', 'dueDate','actions','status' ,'moreDetail']"></tr>
+    </table>
+  </ng-container>
+  <ng-container *ngIf="tasks.length == 0">
+    <div>You do not have any tasks. Click on 'Create a new task' button to create one.</div>
+  </ng-container>
+
+  <button class="new-task" mat-button (click)="createTask()">
+    Create a New Task
+  </button>
+</div>

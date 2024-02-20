@@ -1,0 +1,19 @@
+<div class="detail-container container mt-5 mgn-20">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="form-group" *ngIf="selectedTask">
+          <div class="header-section mt-20">
+            <div class="title">{{ selectedTask.title }}</div>
+            <div class="due-date">Due Date: {{ selectedTask.dueDate | date }}</div>
+          </div>
+          <div class="mt-20">
+            <p>{{ selectedTask.description }}</p>
+          </div> 
+          <div class="mt-20">
+              <div class="completed" *ngIf="selectedTask.completed">Completed</div>
+              <div class="pending" *ngIf="!selectedTask.completed">Pending</div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

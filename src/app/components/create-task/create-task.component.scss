@@ -1,0 +1,24 @@
+.full-width{
+    width: 100%;
+}
+.new-title{
+    font-size: 24px;
+    font-weight: 700;
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+}
+.task-section{
+    max-width: 960px;
+}
+label{
+    display: inline-block;
+    font-size: 14px;
+    opacity: 0.8;
+}
+.due-date-section{
+    width: 50%;
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+}
